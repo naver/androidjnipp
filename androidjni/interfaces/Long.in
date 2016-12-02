@@ -1,0 +1,95 @@
+
+package java.lang;
+
+@NativeNamespace("java.lang")
+@NativeExportMacro("JNI_EXPORT")
+public final class Long {
+
+    @AccessedByNative
+    public static final long MAX_VALUE = 0x7FFFFFFFFFFFFFFFL;
+    @AccessedByNative
+    public static final long MIN_VALUE = 0x8000000000000000L;
+    @AccessedByNative
+    public static final int SIZE = 64;
+
+    @AccessedByNative
+    private long value;
+
+    @CalledByNative
+    public Long(long value) {}
+    public Long(String string) {}
+
+    @Override
+    @CalledByNative
+    public byte byteValue();
+
+    public int compareTo(Long object);
+    public static int compare(long lhs, long rhs);
+
+    private static NumberFormatException invalidLong(String s);
+
+    public static Long decode(String string);
+
+    @Override
+    @CalledByNative
+    public double doubleValue();
+
+    @Override
+    public boolean equals(Object o);
+
+    @Override
+    @CalledByNative
+    public float floatValue();
+
+    public static Long getLong(String string);
+    public static Long getLong(String string, long defaultValue);
+    public static Long getLong(String string, Long defaultValue);
+
+    @Override
+    public int hashCode();
+
+    @Override
+    @CalledByNative
+    public int intValue();
+
+    @Override
+    @CalledByNative
+    public long longValue();
+
+    public static long parseLong(String string);
+    public static long parseLong(String string, int radix);
+    private static long parse(String string, int offset, int radix, boolean negative);
+
+    @Override
+    @CalledByNative
+    public short shortValue();
+
+    public static String toBinaryString(long v);
+    public static String toHexString(long v);
+    public static String toOctalString(long v);
+
+    @Override
+    public String toString();
+
+    public static String toString(long n);
+    public static String toString(long v, int radix);
+
+    public static Long valueOf(String string);
+    public static Long valueOf(String string, int radix);
+
+    public static long highestOneBit(long v);
+    public static long lowestOneBit(long v);
+
+    public static int numberOfLeadingZeros(long v);
+    public static int numberOfTrailingZeros(long v);
+
+    public static int bitCount(long v);
+
+    public static long rotateLeft(long v, int distance);
+    public static long rotateRight(long v, int distance);
+    public static long reverseBytes(long v);
+    public static long reverse(long v);
+    public static int signum(long v);
+
+    public static Long valueOf(long v);
+}

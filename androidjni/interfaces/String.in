@@ -1,0 +1,128 @@
+
+package java.lang;
+
+import java.nio.charset.Charset;
+import java.util.Comparator;
+import java.util.Locale;
+
+@NativeNamespace("java.lang")
+@NativeExportMacro("JNI_EXPORT")
+public final class String  {
+
+    public static final Comparator<String> CASE_INSENSITIVE_ORDER = new CaseInsensitiveComparator();
+
+    @CalledByNative
+    public String() {}
+    @FindBugsSuppressWarnings("DM_DEFAULT_ENCODING")
+    @CalledByNative
+    @SupplementForManaged("CLASS_EXPORT static std::shared_ptr<String> create(const char*);")
+    @SupplementForNatives("CLASS_EXPORT static JNI::PassLocalRef<String> create(const std::string&);")
+    public String(byte[] data) {}
+    public String(byte[] data, int offset, int byteCount) {}
+    public String(byte[] data, int offset, int byteCount, String charsetName) {}
+    public String(byte[] data, String charsetName) {}
+    public String(byte[] data, int offset, int byteCount, Charset charset) {}
+    public String(byte[] data, Charset charset) {}
+    public String(char[] data) {}
+    public String(char[] data, int offset, int charCount) {}
+    public String(String toCopy) {}
+    public String(StringBuffer stringBuffer) {}
+    public String(int[] codePoints, int offset, int count) {}
+    public String(StringBuilder stringBuilder) {}
+
+    public /* native */ char charAt(int index);
+
+    public /* native */ int compareTo(String string);
+    public int compareToIgnoreCase(String string);
+
+    public String concat(String string);
+
+    public static String copyValueOf(char[] data) ;
+    public static String copyValueOf(char[] data, int start, int length);
+    public boolean endsWith(String suffix);
+
+    @Override public /* native */ boolean equals(Object object);
+    @FindBugsSuppressWarnings("ES_COMPARING_PARAMETER_STRING_WITH_EQ")
+    public boolean equalsIgnoreCase(String string);
+
+    @CalledByNative
+    public byte[] getBytes();
+    public byte[] getBytes(String charsetName);
+    public byte[] getBytes(Charset charset);
+    public void getChars(int start, int end, char[] buffer, int index);
+
+    @Override public int hashCode();
+
+    public int indexOf(int c);
+    public int indexOf(int c, int start);
+    public int indexOf(String string);
+    public int indexOf(String subString, int start);
+
+    public /* native */ String intern();
+
+    public /* native */ boolean isEmpty();
+
+    public int lastIndexOf(int c);
+    public int lastIndexOf(int c, int start);
+    public int lastIndexOf(String string);
+    public int lastIndexOf(String subString, int start);
+
+    public /* native */ int length();
+
+    public boolean regionMatches(int thisStart, String string, int start, int length);
+    public boolean regionMatches(boolean ignoreCase, int thisStart, String string, int start, int length);
+
+    public String replace(char oldChar, char newChar);
+    public String replace(CharSequence target, CharSequence replacement);
+
+    public boolean startsWith(String prefix);
+    public boolean startsWith(String prefix, int start);
+
+    public String substring(int start);
+    public String substring(int start, int end);
+
+    public char[] toCharArray();
+
+    public String toLowerCase();
+    public String toLowerCase(Locale locale);
+    @Override
+    public String toString();
+    public String toUpperCase();
+    public String toUpperCase(Locale locale);
+
+    public String trim();
+
+    public static String valueOf(char[] data);
+    public static String valueOf(char[] data, int start, int length);
+    public static String valueOf(char value);
+    public static String valueOf(double value);
+    public static String valueOf(float value);
+    public static String valueOf(int value);
+    public static String valueOf(long value);
+    public static String valueOf(Object value);
+    public static String valueOf(boolean value);
+
+    public boolean contentEquals(StringBuffer strbuf);
+    public boolean contentEquals(CharSequence cs);
+
+    public boolean matches(String regularExpression);
+
+    public String replaceAll(String regularExpression, String replacement);
+    public String replaceFirst(String regularExpression, String replacement);
+
+    public String[] split(String regularExpression);
+    public String[] split(String regularExpression, int limit);
+
+    public CharSequence subSequence(int start, int end);
+
+    public int codePointAt(int index);
+    public int codePointBefore(int index);
+    public int codePointCount(int start, int end);
+
+    public boolean contains(CharSequence cs);
+
+    public int offsetByCodePoints(int index, int codePointOffset);
+
+    public static String format(String format, Object... args);
+    public static String format(Locale locale, String format, Object... args);
+}

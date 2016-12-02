@@ -1,0 +1,40 @@
+
+package java.util;
+
+@NativeNamespace("java.util")
+@NativeExportMacro("JNI_EXPORT")
+public class HashMap<K,V> {
+
+    @CalledByNative
+    @SupplementForManaged("using Data = std::map<std::shared_ptr<void>, std::shared_ptr<void>>;")
+    public HashMap() {}
+    @CalledByNative
+    public HashMap(int capacity) {}
+    @CalledByNative
+    public HashMap(int capacity, float loadFactor) {}
+    public HashMap(Map<? extends K, ? extends V> map) {}
+
+    @CalledByNative
+    public void clear();
+    @CalledByNative
+    public Object clone();
+    @CalledByNative
+    public boolean containsKey(Object key);
+    @CalledByNative
+    public boolean containsValue(Object value);
+    public Set<Entry<K, V>> entrySet();
+    @CalledByNative
+    public V get(Object key);
+    @CalledByNative
+    public boolean isEmpty();
+    public Set<K> keySet();
+    @CalledByNative
+    public V put(K key, V value);
+    public void putAll(Map<? extends K, ? extends V> map);
+    @CalledByNative
+    public V remove(Object key);
+    @CalledByNative
+    public int size();
+    @SupplementForManaged("CLASS_EXPORT const Data& data();")
+    public Collection<V> values();
+}

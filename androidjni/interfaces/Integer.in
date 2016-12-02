@@ -1,0 +1,88 @@
+
+package java.lang;
+
+@NativeNamespace("java.lang")
+@NativeExportMacro("JNI_EXPORT")
+public final class Integer {
+
+    @AccessedByNative
+    public static final int MAX_VALUE = 0x7FFFFFFF;
+    @AccessedByNative
+    public static final int MIN_VALUE = 0x80000000;
+    @AccessedByNative
+    public static final int SIZE = 32;
+
+    @AccessedByNative
+    private int value;
+
+    @CalledByNative
+    public Integer(int value) {}
+    public Integer(String string) {}
+
+    @Override
+    @CalledByNative
+    public byte byteValue();
+
+    public int compareTo(Integer object);
+    public static int compare(int lhs, int rhs);
+
+    public static Integer decode(String string);
+
+    @Override
+    public double doubleValue();
+
+    @Override
+    public boolean equals(Object o);
+
+    @Override
+    @CalledByNative
+    public float floatValue() ;
+
+    public static Integer getInteger(String string);
+    public static Integer getInteger(String string, int defaultValue);
+    public static Integer getInteger(String string, Integer defaultValue);
+
+    @Override
+    public int hashCode();
+
+    @Override
+    @CalledByNative
+    public int intValue();
+    @Override
+    @CalledByNative
+    public long longValue();
+
+    public static int parseInt(String string);
+    public static int parseInt(String string, int radix);
+
+    @Override
+    @CalledByNative
+    public short shortValue();
+
+    public static String toBinaryString(int i);
+    public static String toHexString(int i);
+    public static String toOctalString(int i);
+
+    @Override
+    public String toString();
+
+    public static String toString(int i);
+    public static String toString(int i, int radix);
+    public static Integer valueOf(String string);
+    public static Integer valueOf(String string, int radix);
+
+    public static int highestOneBit(int i);
+    public static int lowestOneBit(int i);
+
+    public static int numberOfLeadingZeros(int i);
+    public static int numberOfTrailingZeros(int i);
+
+    public static int bitCount(int i);
+    public static int rotateLeft(int i, int distance);
+    public static int rotateRight(int i, int distance);
+    public static int reverseBytes(int i);
+    public static int reverse(int i);
+    public static int signum(int i);
+
+    public static Integer valueOf(int i);
+}

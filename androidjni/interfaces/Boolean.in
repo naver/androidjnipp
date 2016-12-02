@@ -1,0 +1,35 @@
+
+package java.lang;
+
+@NativeNamespace("java.lang")
+@NativeExportMacro("JNI_EXPORT")
+public final class Boolean {
+
+    @AccessedByNative
+    private boolean value;
+
+    public Boolean(String string) {}
+    @CalledByNative
+    public Boolean(boolean value) {}
+
+    @CalledByNative
+    public boolean booleanValue();
+
+    @Override
+    public boolean equals(Object o);
+    public int compareTo(Boolean that);
+    public static int compare(boolean lhs, boolean rhs);
+
+    @Override
+    public int hashCode();
+
+    @Override
+    public String toString();
+
+    public static boolean getBoolean(String string);
+    public static boolean parseBoolean(String s);
+
+    public static String toString(boolean value);
+    public static Boolean valueOf(String string);
+    public static Boolean valueOf(boolean b);
+}

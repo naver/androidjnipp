@@ -1,0 +1,108 @@
+
+package android.graphics;
+
+import android.os.Parcel;
+
+import java.io.PrintWriter;
+
+/**
+ * Rect holds four integer coordinates for a rectangle. The rectangle is
+ * represented by the coordinates of its 4 edges (left, top, right bottom).
+ * These fields can be accessed directly. Use width() and height() to retrieve
+ * the rectangle's width and height. Note: most methods do not check to see that
+ * the coordinates are sorted correctly (i.e. left <= right and top <= bottom).
+ */
+@NativeNamespace("android.graphics")
+@NativeExportMacro("JNI_EXPORT")
+public final class Rect {
+    @AccessedByNative
+    public int left;
+    @AccessedByNative
+    public int top;
+    @AccessedByNative
+    public int right;
+    @AccessedByNative
+    public int bottom;
+
+    @CalledByNative
+    public Rect() {}
+    @CalledByNative
+    public Rect(int left, int top, int right, int bottom) {}
+    @CalledByNative
+    public Rect(Rect r) {}
+
+    @CalledByNative
+    public boolean equals(Object o);
+    @CalledByNative
+    public int hashCode();
+
+    public String toString();
+    public String toShortString();
+    public String toShortString(StringBuilder sb);
+    public String flattenToString();
+    public static Rect unflattenFromString(String str);
+    public void printShortString(PrintWriter pw);
+
+    @CalledByNative
+    public final boolean isEmpty();
+
+    @CalledByNative
+    public final int width();
+    @CalledByNative
+    public final int height();
+
+    @CalledByNative
+    public final int centerX();
+    @CalledByNative
+    public final int centerY();
+    @CalledByNative
+    public final float exactCenterX();
+    @CalledByNative
+    public final float exactCenterY();
+
+    @CalledByNative
+    public void setEmpty();
+    @CalledByNative
+    public void set(int left, int top, int right, int bottom);
+    @CalledByNative
+    public void set(Rect src);
+
+    @CalledByNative
+    public void offset(int dx, int dy);
+    @CalledByNative
+    public void offsetTo(int newLeft, int newTop);
+    @CalledByNative
+    public void inset(int dx, int dy);
+
+    @CalledByNative
+    public boolean contains(int x, int y);
+    @CalledByNative
+    public boolean contains(int left, int top, int right, int bottom);
+    @CalledByNative
+    public boolean contains(Rect r);
+
+    @CalledByNative
+    public boolean intersect(int left, int top, int right, int bottom);
+    @CalledByNative
+    public boolean intersect(Rect r);
+    @CalledByNative
+    public boolean setIntersect(Rect a, Rect b);
+    @CalledByNative
+    public boolean intersects(int left, int top, int right, int bottom);
+    @CalledByNative
+    public static boolean intersects(Rect a, Rect b);
+
+    public void union(int left, int top, int right, int bottom);
+    public void union(Rect r);
+    public void union(int x, int y);
+
+    @CalledByNative
+    public void sort();
+
+    public int describeContents();
+    public void writeToParcel(Parcel out, int flags);
+    public void readFromParcel(Parcel in);
+
+    @CalledByNative
+    public void scale(float scale);
+}

@@ -1,0 +1,44 @@
+
+package android.graphics;
+
+import android.os.Parcel;
+
+/**
+ * Point holds two integer coordinates
+ */
+@NativeNamespace("android.graphics")
+@NativeExportMacro("JNI_EXPORT")
+public class Point {
+    @AccessedByNative
+    public int x;
+    @AccessedByNative
+    public int y;
+
+    @CalledByNative
+    public Point() {}
+    @CalledByNative
+    public Point(int x, int y) {}
+    @CalledByNative
+    public Point(Point src) {}
+
+    @CalledByNative
+    public void set(int x, int y);
+    @CalledByNative
+    public final void negate();
+    @CalledByNative
+    public final void offset(int dx, int dy);
+
+    @CalledByNative
+    public final boolean equals(int x, int y);
+    @CalledByNative
+    public boolean equals(Object o);
+
+    @CalledByNative
+    public int hashCode();
+    public String toString();
+
+    public int describeContents();
+
+    public void writeToParcel(Parcel out, int flags);
+    public void readFromParcel(Parcel in);
+}

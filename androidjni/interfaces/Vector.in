@@ -1,0 +1,109 @@
+
+package java.util;
+
+@NativeNamespace("java.util")
+@NativeExportMacro("JNI_EXPORT")
+public class Vector<E> {
+
+    @CalledByNative
+    @SupplementForManaged("using Data = std::vector<std::shared_ptr<void>>;")
+    public Vector() {}
+    @CalledByNative
+    public Vector(int capacity) {}
+    @CalledByNative
+    public Vector(int capacity, int capacityIncrement) {}
+    public Vector(Collection<? extends E> collection) {}
+
+    @CalledByNative
+    public void add(int location, E object);
+    @CalledByNative
+    public synchronized boolean add(E object);
+    public synchronized boolean addAll(int location, Collection<? extends E> collection);
+    public synchronized boolean addAll(Collection<? extends E> collection);
+    @CalledByNative
+    public synchronized void addElement(E object);
+
+    @CalledByNative
+    public synchronized int capacity();
+
+    @CalledByNative
+    public void clear();
+
+    @CalledByNative
+    public synchronized Object clone();
+
+    @CalledByNative
+    public boolean contains(Object object);
+    public synchronized boolean containsAll(Collection<?> collection);
+
+    public synchronized void copyInto(Object[] elements);
+
+    @CalledByNative
+    public synchronized E elementAt(int location);
+    public Enumeration<E> elements();
+
+    @CalledByNative
+    public synchronized void ensureCapacity(int minimumCapacity);
+
+    @CalledByNative
+    public synchronized boolean equals(Object object);
+
+    @CalledByNative
+    public synchronized E firstElement();
+    @CalledByNative
+    public E get(int location);
+    @CalledByNative
+    public synchronized int hashCode();
+
+    @CalledByNative
+    public int indexOf(Object object);
+    @CalledByNative
+    public synchronized int indexOf(Object object, int location);
+    @CalledByNative
+    public synchronized void insertElementAt(E object, int location);
+
+    @CalledByNative
+    public synchronized boolean isEmpty();
+
+    @CalledByNative
+    public synchronized E lastElement();
+    @CalledByNative
+    public synchronized int lastIndexOf(Object object);
+    @CalledByNative
+    public synchronized int lastIndexOf(Object object, int location);
+
+    @CalledByNative
+    public synchronized E remove(int location);
+
+    @CalledByNative
+    public boolean remove(Object object);
+    public synchronized boolean removeAll(Collection<?> collection);
+    @CalledByNative
+    public synchronized void removeAllElements();
+    @CalledByNative
+    public synchronized boolean removeElement(Object object);
+    @CalledByNative
+    public synchronized void removeElementAt(int location);
+
+    public synchronized boolean retainAll(Collection<?> collection);
+
+    @CalledByNative
+    public synchronized E set(int location, E object);
+    @CalledByNative
+    public synchronized void setElementAt(E object, int location);
+
+    @CalledByNative
+    public synchronized void setSize(int length);
+
+    @CalledByNative
+    public synchronized int size();
+
+    public synchronized List<E> subList(int start, int end);
+    @SupplementForManaged("CLASS_EXPORT const Data& data();")
+    public synchronized Object[] toArray();
+    public synchronized <T> T[] toArray(T[] contents);
+    public synchronized String toString();
+
+    @CalledByNative
+    public synchronized void trimToSize();
+}
