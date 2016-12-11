@@ -23,17 +23,17 @@
  * OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-#include <androidjni/android/graphics/Rect.h>
+#include <JNI/java/lang/Boolean.h>
 
-namespace android {
-namespace graphics {
+namespace java {
+namespace lang {
 namespace Natives {
 
-Rect* Rect::CTOR()
+Boolean* Boolean::CTOR()
 {
-    return new Rect;
+    return new Boolean;
 }
 
 } // namespace Natives
-} // namespace graphics
-} // namespace android
+} // namespace lang
+} // namespace java

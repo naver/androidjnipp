@@ -23,15 +23,15 @@
  * OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-#include <androidjni/java/util/Vector.h>
+#include <JNI/java/util/HashMap.h>
 
 namespace java {
 namespace util {
 namespace Natives {
 
-Vector* Vector::CTOR()
+HashMap* HashMap::CTOR()
 {
-    return new Vector;
+    return new HashMap;
 }
 
 } // namespace Natives

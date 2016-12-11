@@ -23,22 +23,17 @@
  * OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-#include <androidjni/java/lang/String.h>
+#include <JNI/java/util/Vector.h>
 
 namespace java {
-namespace lang {
+namespace util {
 namespace Natives {
 
-String* String::CTOR()
+Vector* Vector::CTOR()
 {
-    return new String;
-}
-
-JNI::PassLocalRef<String> String::create(const std::string& data)
-{
-    return String::create(JNI::PassArray<int8_t>(reinterpret_cast<const int8_t*>(data.data()), data.size(), true));
+    return new Vector;
 }
 
 } // namespace Natives
-} // namespace lang
+} // namespace util
 } // namespace java

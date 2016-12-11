@@ -2,13 +2,10 @@ cmake_minimum_required(VERSION 3.4)
 
 project(androidjni++)
 
-set(PYTHON python)
-set(GENERATOR_SCRIPT "${CMAKE_SOURCE_DIR}/androidjni/scripts/interface-generator.py")
+set(LIBRARY_PRODUCT_DIR "${CMAKE_BINARY_DIR}" CACHE PATH "Path to the directory where products will be copied to.")
 
-if (NOT LIBRARY_PRODUCT_DIR)
-    set(LIBRARY_PRODUCT_DIR "${CMAKE_BINARY_DIR}" CACHE PATH "Path to the directory where products will be copied to.")
-endif ()
-get_filename_component(LIBRARY_PRODUCT_DIR ${LIBRARY_PRODUCT_DIR} ABSOLUTE)
+find_package(PythonInterp 2.7 REQUIRED)
+set(GENERATOR_SCRIPT "${CMAKE_SOURCE_DIR}/generator/scripts/interface-generator.py")
 
 set(CMAKE_ARCHIVE_OUTPUT_DIRECTORY ${LIBRARY_PRODUCT_DIR})
 set(CMAKE_LIBRARY_OUTPUT_DIRECTORY ${LIBRARY_PRODUCT_DIR})
@@ -19,13 +16,6 @@ include(HelperMacros)
 include(Options${CMAKE_SYSTEM_NAME})
 
 if (ANDROID)
-    find_package(Java 1.7 EXACT)
-    include(UseJava)
-
-    set(CMAKE_ANDROID_API_MIN 14)
-endif ()
-
-if (ANDROID)
     set(TARGET_PLATFORM android)
 else ()
     set(TARGET_PLATFORM generic)
@@ -33,11 +23,11 @@ endif ()
 
 macro(LIST_INTERFACE_OUTPUTS _output_list _basename)
     set(_interface_outputs
-        ${CMAKE_CURRENT_BINARY_DIR}/GeneratedInterfaces/${_basename}NativesStub.cpp
+        ${CMAKE_CURRENT_BINARY_DIR}/GeneratedFiles/${_basename}NativesStub.cpp
     )
     if (NOT ANDROID)
         set(_interface_outputs ${_interface_outputs}
-            ${CMAKE_CURRENT_BINARY_DIR}/GeneratedInterfaces/${_basename}ManagedStub.cpp
+            ${CMAKE_CURRENT_BINARY_DIR}/GeneratedFiles/${_basename}ManagedStub.cpp
         )
     endif ()
 
@@ -55,11 +45,12 @@ macro(GENERATE_INTERFACE_STUBS _output_sources _idl_list)
             OUTPUT  ${_outputs}
             MAIN_DEPENDENCY ${_idl}
             DEPENDS ${GENERATOR_SCRIPT}
-            COMMAND ${PYTHON} ${GENERATOR_SCRIPT} --java ${_absolute} --shared ${CMAKE_CURRENT_BINARY_DIR}/GeneratedInterfaces --${TARGET_PLATFORM} ${CMAKE_CURRENT_BINARY_DIR}/GeneratedInterfaces
+            COMMAND ${PYTHON_EXECUTABLE} ${GENERATOR_SCRIPT} --java ${_absolute} --shared ${CMAKE_CURRENT_BINARY_DIR}/GeneratedFiles --${TARGET_PLATFORM} ${CMAKE_CURRENT_BINARY_DIR}/GeneratedFiles
             VERBATIM)
         unset(_outputs)
     endforeach ()
 endmacro()
 
+add_subdirectory(android)
 add_subdirectory(androidjni)
 add_subdirectory(test)

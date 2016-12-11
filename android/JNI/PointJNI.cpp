@@ -23,17 +23,17 @@
  * OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-#include <androidjni/java/lang/Long.h>
+#include <JNI/android/graphics/Point.h>
 
-namespace java {
-namespace lang {
+namespace android {
+namespace graphics {
 namespace Natives {
 
-Long* Long::CTOR()
+Point* Point::CTOR()
 {
-    return new Long;
+    return new Point;
 }
 
 } // namespace Natives
-} // namespace lang
-} // namespace java
+} // namespace graphics
+} // namespace android

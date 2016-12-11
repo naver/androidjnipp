@@ -22,11 +22,11 @@ endif ()
 
 include_directories(
     "${CMAKE_CURRENT_SOURCE_DIR}"
-    "${LIBRARY_PRODUCT_DIR}/include"
-    "${LIBRARY_PRODUCT_DIR}/include/android"
+    "${LIBRARY_PRODUCT_DIR}/include/androidjni++"
+    "${LIBRARY_PRODUCT_DIR}/include/androidjni++/android"
     "${CMAKE_SOURCE_DIR}"
     "${CMAKE_CURRENT_BINARY_DIR}"
-    "${CMAKE_CURRENT_BINARY_DIR}/GeneratedInterfaces"
+    "${CMAKE_CURRENT_BINARY_DIR}/GeneratedFiles"
     "${CMAKE_BINARY_DIR}"
 )
 

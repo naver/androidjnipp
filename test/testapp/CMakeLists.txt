@@ -9,7 +9,9 @@ if (ANDROID)
         android/src/com/example/test/StringGeneratorClient.java
         android/src/com/example/test/TestActivity.java
     )
-    set_source_files_properties(android/stub.cpp PROPERTIES HEADER_FILE_ONLY TRUE)
+    if (MSVC)
+        set_source_files_properties(android/stub.cpp PROPERTIES HEADER_FILE_ONLY TRUE)
+    endif ()
 
     set(CMAKE_ANDROID_GUI TRUE)
 elseif (WIN32)
@@ -22,11 +24,11 @@ endif ()
 
 include_directories(
     "${CMAKE_CURRENT_SOURCE_DIR}"
-    "${LIBRARY_PRODUCT_DIR}/include"
-    "${LIBRARY_PRODUCT_DIR}/include/android"
+    "${LIBRARY_PRODUCT_DIR}/include/androidjni++"
+    "${LIBRARY_PRODUCT_DIR}/include/androidjni++/android"
     "${CMAKE_SOURCE_DIR}"
     "${CMAKE_CURRENT_BINARY_DIR}"
-    "${CMAKE_CURRENT_BINARY_DIR}/../testlib/GeneratedInterfaces"
+    "${CMAKE_CURRENT_BINARY_DIR}/../testlib/GeneratedFiles"
     "${CMAKE_BINARY_DIR}"
 )
 

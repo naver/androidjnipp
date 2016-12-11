@@ -42,55 +42,35 @@ else ()
     )
 endif ()
 
-set(ANDROIDJNI_INTERFACES
-    interfaces/Boolean.in
-    interfaces/HashMap.in
-    interfaces/Integer.in
-    interfaces/Long.in
-    interfaces/Point.in
-    interfaces/Rect.in
-    interfaces/String.in
-    interfaces/Vector.in
-)
-
-foreach (_file ${ANDROIDJNI_INTERFACES})
-    if (NOT ANDROID)
-        string(REGEX REPLACE "interfaces/(.*).in" "android/\\1.cpp" _source "${_file}")
-        set(ANDROIDJNI_SOURCES ${ANDROIDJNI_SOURCES} ${_source})
-    endif ()
-
-    string(REGEX REPLACE "interfaces/(.*).in" "androidjni/\\1JNI.cpp" _source "${_file}")
-    set(ANDROIDJNI_SOURCES ${ANDROIDJNI_SOURCES} ${_source})
-endforeach ()
-
 include_directories(
     "${CMAKE_CURRENT_SOURCE_DIR}"
     "${CMAKE_CURRENT_SOURCE_DIR}/platforms/${TARGET_PLATFORM}"
     "${CMAKE_SOURCE_DIR}"
     "${CMAKE_CURRENT_BINARY_DIR}"
-    "${CMAKE_CURRENT_BINARY_DIR}/GeneratedInterfaces"
     "${CMAKE_BINARY_DIR}"
 )
 
 add_custom_command(
     OUTPUT  ${LIBRARY_PRODUCT_DIR}/scripts/interface-generator.py
     MAIN_DEPENDENCY ${GENERATOR_SCRIPT}
-    COMMAND ${CMAKE_COMMAND} -E copy_directory ${CMAKE_CURRENT_SOURCE_DIR}/scripts ${LIBRARY_PRODUCT_DIR}/scripts
+    COMMAND ${CMAKE_COMMAND} -E copy_directory ${CMAKE_SOURCE_DIR}/generator/scripts ${LIBRARY_PRODUCT_DIR}/scripts
     VERBATIM)
 
 add_subdirectory(annotations)
 
 add_definitions(-DBUILDING_JNILIB -DJNI_STATIC)
 
-GENERATE_INTERFACE_STUBS(ANDROIDJNI_SOURCES "${ANDROIDJNI_INTERFACES}")
 WRAP_SOURCELIST(${ANDROIDJNI_HEADERS} ${ANDROIDJNI_SOURCES})
 
-add_library(androidjni++ ${ANDROIDJNI_HEADERS} ${ANDROIDJNI_SOURCES} ${GENERATOR_SCRIPT})
+add_library(androidjni++ ${ANDROIDJNI_HEADERS} ${ANDROIDJNI_SOURCES} ${GENERATOR_SCRIPT} $<TARGET_OBJECTS:android>)
 
 ADD_PREFIX_HEADER(androidjni++ JNIExportMacros.h)
 ADD_POST_BUILD_COMMAND(androidjni++)
 
-COPY_LIBRARY_HEADERS_DIRECTORY(androidjni++ android include/android)
-COPY_LIBRARY_HEADERS_DIRECTORY(androidjni++ androidjni include/android/JNI)
-COPY_LIBRARY_HEADERS_DIRECTORY(androidjni++ "${CMAKE_CURRENT_BINARY_DIR}/GeneratedInterfaces" include/android)
-COPY_LIBRARY_HEADERS(androidjni++ "${ANDROIDJNI_HEADERS}" include/androidjni)
+COPY_LIBRARY_HEADERS(androidjni++ "${ANDROIDJNI_HEADERS}" include/androidjni++/androidjni)
+
+set(ANDROID_SOURCE_DIR ${CMAKE_SOURCE_DIR}/android)
+set(ANDROID_BINARY_DIR ${CMAKE_BINARY_DIR}/android)
+
+COPY_LIBRARY_HEADERS_DIRECTORY(androidjni++ "${ANDROID_SOURCE_DIR}" include/androidjni++/android)
+COPY_LIBRARY_HEADERS_DIRECTORY(androidjni++ "${ANDROID_BINARY_DIR}/GeneratedFiles" include/androidjni++/android)

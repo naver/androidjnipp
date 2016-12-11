@@ -23,15 +23,20 @@
  * OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-#include <androidjni/java/lang/Boolean.h>
+#include <JNI/java/lang/String.h>
 
 namespace java {
 namespace lang {
 namespace Natives {
 
-Boolean* Boolean::CTOR()
+String* String::CTOR()
 {
-    return new Boolean;
+    return new String;
+}
+
+JNI::PassLocalRef<String> String::create(const std::string& data)
+{
+    return String::create(JNI::PassArray<int8_t>(reinterpret_cast<const int8_t*>(data.data()), data.size(), true));
 }
 
 } // namespace Natives

@@ -23,17 +23,17 @@
  * OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-#include <androidjni/java/util/HashMap.h>
+#include <JNI/android/graphics/Rect.h>
 
-namespace java {
-namespace util {
+namespace android {
+namespace graphics {
 namespace Natives {
 
-HashMap* HashMap::CTOR()
+Rect* Rect::CTOR()
 {
-    return new HashMap;
+    return new Rect;
 }
 
 } // namespace Natives
-} // namespace util
-} // namespace java
+} // namespace graphics
+} // namespace android

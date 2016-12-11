@@ -23,7 +23,7 @@
  * OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-#include <androidjni/java/lang/Integer.h>
+#include <JNI/java/lang/Integer.h>
 
 namespace java {
 namespace lang {
