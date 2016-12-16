@@ -25,7 +25,7 @@
 
 #pragma once
 
-#include <java/util/VectorNativesBase.h>
+#include <java/util/Natives/Vector.h>
 
 namespace java {
 namespace util {

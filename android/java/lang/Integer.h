@@ -25,7 +25,7 @@
 
 #pragma once
 
-#include <java/lang/IntegerManagedBase.h>
+#include <java/lang/Managed/Integer.h>
 
 namespace java {
 namespace lang {

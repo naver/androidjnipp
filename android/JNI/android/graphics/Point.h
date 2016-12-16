@@ -25,7 +25,7 @@
 
 #pragma once
 
-#include <android/graphics/PointNativesBase.h>
+#include <android/graphics/Natives/Point.h>
 
 namespace android {
 namespace graphics {

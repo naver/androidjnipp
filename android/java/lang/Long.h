@@ -25,7 +25,7 @@
 
 #pragma once
 
-#include <java/lang/LongManagedBase.h>
+#include <java/lang/Managed/Long.h>
 
 namespace java {
 namespace lang {

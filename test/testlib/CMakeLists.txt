@@ -9,8 +9,8 @@ if (ANDROID)
     )
 else ()
     list(APPEND TESTLIB_SOURCES
-        generic/StringGeneratorClientManaged.cpp
-        generic/StringGeneratorManaged.cpp
+        generic/StringGeneratorClient.cpp
+        generic/StringGenerator.cpp
     )
 
     if (WIN32)

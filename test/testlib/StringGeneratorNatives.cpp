@@ -23,12 +23,12 @@
  * OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-#include <com/example/test/StringGeneratorNativesBase.h>
+#include <com/example/test/Natives/StringGenerator.h>
 
 #include <JNI/java/lang/Integer.h>
 #include <JNI/java/lang/String.h>
 #include <JNI/java/util/Vector.h>
-#include <com/example/test/StringGeneratorClientNativesBase.h>
+#include <com/example/test/Natives/StringGeneratorClient.h>
 
 #include <androidjni/GlobalRef.h>
 #include <androidjni/MarshalingHelpers.h>

@@ -25,7 +25,7 @@
 
 #pragma once
 
-#include <java/lang/BooleanNativesBase.h>
+#include <java/lang/Natives/Boolean.h>
 
 namespace java {
 namespace lang {

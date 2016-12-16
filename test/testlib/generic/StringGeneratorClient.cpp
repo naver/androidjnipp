@@ -23,7 +23,7 @@
  * OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-#include <com/example/test/StringGeneratorClientManagedBase.h>
+#include <com/example/test/Managed/StringGeneratorClient.h>
 
 namespace com {
 namespace example {

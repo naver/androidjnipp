@@ -25,7 +25,7 @@
 
 #pragma once
 
-#include <java/lang/BooleanManagedBase.h>
+#include <java/lang/Managed/Boolean.h>
 
 namespace java {
 namespace lang {

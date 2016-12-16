@@ -25,7 +25,7 @@
 
 #pragma once
 
-#include <java/lang/StringNativesBase.h>
+#include <java/lang/Natives/String.h>
 
 namespace java {
 namespace lang {

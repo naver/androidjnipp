@@ -25,7 +25,7 @@
 
 #pragma once
 
-#include <android/graphics/PointManagedBase.h>
+#include <android/graphics/Managed/Point.h>
 
 namespace android {
 namespace graphics {

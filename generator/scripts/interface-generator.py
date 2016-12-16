@@ -442,7 +442,7 @@ class GeneratorBackend:
         return ' '.join(['namespace', ' { namespace '.join(self.importClassPackage(class_name) + [namespace]), '{', 'class', class_name, ';', '}' * (len(self.importClassPackage(class_name)) + 1)])
 
     def importClassInclude(self, class_name, namespace):
-        return ' '.join(["#include", ''.join(['<', '/'.join(self.importClassPackage(class_name)), '/', class_name, namespace, "Base.h", '>'])])
+        return ' '.join(["#include", ''.join(['<', '/'.join(self.importClassPackage(class_name)), '/', namespace, '/', class_name, ".h", '>'])])
 
     def importClassPath(self, class_name, namespace):
         return '::'.join(self.importClassPackage(class_name) + [namespace, class_name])
@@ -2258,10 +2258,10 @@ def generateBindings(frontend, backend, source_file, target_file):
             print(source)
 
 def generatedHeaderLocation(target_path, source_file, is_managed):
-    target_header_path = ''.join([target_path, source_file.package])
+    target_header_path = ''.join([target_path, source_file.package, '/', managed_files_suffix if is_managed else natives_files_suffix])
     if not os.path.exists(target_header_path):
         os.makedirs(target_header_path)
-    return ''.join([target_header_path, '/', source_file.filename_only, managed_files_suffix if is_managed else natives_files_suffix, "Base.h"])
+    return ''.join([target_header_path, '/', source_file.filename_only, ".h"])
 
 def generateBindingsHeader(source_file, output_path):
     frontend = GeneratorFrontend()

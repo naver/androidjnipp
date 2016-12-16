@@ -25,7 +25,7 @@
 
 #pragma once
 
-#include <java/lang/StringManagedBase.h>
+#include <java/lang/Managed/String.h>
 
 namespace java {
 namespace lang {

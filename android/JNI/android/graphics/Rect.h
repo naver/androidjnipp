@@ -25,7 +25,7 @@
 
 #pragma once
 
-#include <android/graphics/RectNativesBase.h>
+#include <android/graphics/Natives/Rect.h>
 
 namespace android {
 namespace graphics {

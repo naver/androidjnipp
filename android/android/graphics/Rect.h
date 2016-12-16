@@ -25,7 +25,7 @@
 
 #pragma once
 
-#include <android/graphics/RectManagedBase.h>
+#include <android/graphics/Managed/Rect.h>
 
 namespace android {
 namespace graphics {

@@ -25,7 +25,7 @@
 
 #pragma once
 
-#include <java/util/HashMapManagedBase.h>
+#include <java/util/Managed/HashMap.h>
 
 namespace java {
 namespace util {

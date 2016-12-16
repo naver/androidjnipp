@@ -25,7 +25,7 @@
 
 #pragma once
 
-#include <java/lang/LongNativesBase.h>
+#include <java/lang/Natives/Long.h>
 
 namespace java {
 namespace lang {

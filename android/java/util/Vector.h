@@ -25,7 +25,7 @@
 
 #pragma once
 
-#include <java/util/VectorManagedBase.h>
+#include <java/util/Managed/Vector.h>
 
 namespace java {
 namespace util {

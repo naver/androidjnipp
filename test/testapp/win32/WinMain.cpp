@@ -27,8 +27,8 @@
 #include <tchar.h>
 
 #include <test/testlib/TestLibPrefix.h>
-#include <com/example/test/StringGeneratorManagedBase.h>
-#include <com/example/test/StringGeneratorClientManagedBase.h>
+#include <com/example/test/Managed/StringGenerator.h>
+#include <com/example/test/Managed/StringGeneratorClient.h>
 
 #include <android/graphics/Rect.h>
 #include <java/lang/String.h>

@@ -25,7 +25,7 @@
 
 #pragma once
 
-#include <java/lang/IntegerNativesBase.h>
+#include <java/lang/Natives/Integer.h>
 
 namespace java {
 namespace lang {
